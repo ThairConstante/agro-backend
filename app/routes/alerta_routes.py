@@ -12,19 +12,14 @@ app = APIRouter()
 
 
 @app.get(
-    "/list",
-    dependencies=[Depends(decode_token)]
-)
+    "/list")
 def list_alertas(db: Session = Depends(get_db)):
 
     return crud.get_alertas(db=db)
 
 
 @app.get(
-    "/{alerta_id}",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.AlertaResponse
-)
+    "/{alerta_id}", response_model=schemas.AlertaResponse)
 def get_alerta(
     alerta_id: int,
     db: Session = Depends(get_db)
@@ -45,10 +40,7 @@ def get_alerta(
 
 
 @app.post(
-    "/create",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.AlertaResponse
-)
+    "/create", response_model=schemas.AlertaResponse)
 def create_alerta(
     alerta: schemas.AlertaCreate,
     db: Session = Depends(get_db)
@@ -60,11 +52,7 @@ def create_alerta(
     )
 
 
-@app.put(
-    "/update/{alerta_id}",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.AlertaResponse
-)
+@app.put("/update/{alerta_id}", response_model=schemas.AlertaResponse)
 def update_alerta(
     alerta_id: int,
     alerta: schemas.AlertaUpdate,
