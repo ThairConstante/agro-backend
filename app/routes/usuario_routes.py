@@ -8,11 +8,11 @@ import app.schemas.usuario_schemas as schemas
 
 app = APIRouter()
 
-@app.get("/list", dependencies=[Depends(decode_token)])
+@app.get("/list")
 def list_users(db: Session = Depends(get_db)):
     return crud.get_usuarios(db=db)
 
-@app.get("/userId/{usuario_id}", dependencies=[Depends(decode_token)], response_model=schemas.UsuarioBase)
+@app.get("/userId/{usuario_id}", response_model=schemas.UsuarioBase)
 def id_user(usuario_id: int, db: Session = Depends(get_db)):
     usuario = crud.get_usuario(db=db, usuario_id=usuario_id)
 
@@ -21,11 +21,11 @@ def id_user(usuario_id: int, db: Session = Depends(get_db)):
 
     return usuario
 
-@app.post("/create", dependencies=[Depends(decode_token)], response_model=schemas.UsuarioCreate)
+@app.post("/create", response_model=schemas.UsuarioCreate)
 def user_create(user: schemas.UsuarioCreate, db: Session = Depends(get_db)):
     return crud.crear_usuario(db=db, user=user)
 
-@app.put("/update/{usuario_id}", dependencies=[Depends(decode_token)], response_model=schemas.UsuarioBase)
+@app.put("/update/{usuario_id}", response_model=schemas.UsuarioBase)
 def user_update(usuario_id: int, user: schemas.UsuarioUpdate, db: Session = Depends(get_db)):
     usuario = crud.actualizar_usuario(db=db, usuario_id=usuario_id, user=user)
 
@@ -34,10 +34,10 @@ def user_update(usuario_id: int, user: schemas.UsuarioUpdate, db: Session = Depe
 
     return usuario
 
-@app.get("/types", dependencies=[Depends(decode_token)])
+@app.get("/types")
 def list_user_types(db: Session = Depends(get_db)):
     return crud.get_tipos(db)
 
-@app.get("/statuses", dependencies=[Depends(decode_token)])
+@app.get("/statuses")
 def list_user_statuses(db: Session = Depends(get_db)):
     return crud.get_estados(db)
