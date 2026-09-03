@@ -46,7 +46,7 @@ app.include_router(auth_app, tags=["Auth"], prefix="/auth")
 
 
 
-app.include_router(usuario_app, tags=["Usuarios"],prefix="/users")
+app.include_router(usuario_app, tags=["Usuarios"],prefix="/usuarios")
 app.include_router(zona_geografica_app, tags=["Zonas Geográficas"], prefix="/zonas_geograficas")
 app.include_router(tipo_suelo_app, tags=["Tipos de Suelo"], prefix="/tipos_suelo")
 app.include_router(lote_tierra_app, tags=["Lotes de Tierra"], prefix="/lotes")
