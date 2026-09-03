@@ -13,7 +13,6 @@ from app.routes.tipo_sensor_routes import app as tipo_sensor_app
 from app.routes.sensor_routes import app as sensor_app
 from app.routes.parametro_medido_routes import app as parametro_medido_app
 from app.routes.muestra_suelo_routes import app as muestra_suelo_app
-from app.routes.cultivo_routes import app as cultivo_app
 from app.routes.alerta_routes import app as alerta_app
 from app.routes.historial_consulta_llm_routes import app as historial_consulta_llm_app
 
@@ -54,7 +53,6 @@ app.include_router(tipo_sensor_app, tags=["Tipos de Sensor"], prefix="/tipos_sen
 app.include_router(sensor_app, tags=["Sensores"], prefix="/sensores")
 app.include_router(parametro_medido_app, tags=["Parámetros Medidos"], prefix="/parametros")
 app.include_router(muestra_suelo_app, tags=["Muestras de Suelo"], prefix="/muestras")
-app.include_router(cultivo_app, tags=["Cultivos"], prefix="/cultivos")
 app.include_router(alerta_app, tags=["Alertas"], prefix="/alertas")
 app.include_router(historial_consulta_llm_app, tags=["Historial LLM"], prefix="/consultas-llm")
 
