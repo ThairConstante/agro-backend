@@ -1,11 +1,20 @@
 from sqlalchemy.orm import Session
-from app.models.user_model import Usuarios
-import app.schemas
-from app.schemas.user_schemas import UserUpdate
+
+from app.models.usuario_model import Usuarios
+
+from app.schemas.usuario_schemas import UsuarioUpdate
+
 
 def login_user(db: Session, username: str, password: str):
-    usuario = db.query(Usuarios).filter(Usuarios.User_Name  == username, Usuarios.User_Password == password).first()
+    usuario = db.query(Usuarios).filter(
+        Usuarios.Usuario_Nombre == username,
+        Usuarios.Usuario_Password == password
+    ).first()
+
     return usuario
 
+
 def user_by_username(db: Session, username: str):
-    return db.query(Usuarios).filter(Usuarios.User_Name == username).first()
+    return db.query(Usuarios).filter(
+        Usuarios.Usuario_Nombre == username
+    ).first()

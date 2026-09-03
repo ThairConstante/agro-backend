@@ -4,7 +4,7 @@ import uvicorn
 from app.core.config import SessionLocal, engine
 
 from app.routes.auth_routes import app as auth_app
-from app.routes.user_routes import app as user_app
+from app.routes.usuario_routes import app as usuario_app
 
 from app.routes.zona_geografica_routes import app as zona_geografica_app
 from app.routes.tipo_suelo_routes import app as tipo_suelo_app
@@ -46,7 +46,7 @@ app.include_router(auth_app, tags=["Auth"], prefix="/auth")
 
 
 
-app.include_router(user_app, tags=["Users"],prefix="/users")
+app.include_router(usuario_app, tags=["Usuarios"],prefix="/users")
 app.include_router(zona_geografica_app, tags=["Zonas Geográficas"], prefix="/zonas_geograficas")
 app.include_router(tipo_suelo_app, tags=["Tipos de Suelo"], prefix="/tipos_suelo")
 app.include_router(lote_tierra_app, tags=["Lotes de Tierra"], prefix="/lotes")
