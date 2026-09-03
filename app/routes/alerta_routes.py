@@ -11,15 +11,13 @@ import app.schemas.alerta_schema as schemas
 app = APIRouter()
 
 
-@app.get(
-    "/list")
+@app.get("/list")
 def list_alertas(db: Session = Depends(get_db)):
 
     return crud.get_alertas(db=db)
 
 
-@app.get(
-    "/{alerta_id}", response_model=schemas.AlertaResponse)
+@app.get("/{alerta_id}", response_model=schemas.AlertaResponse)
 def get_alerta(
     alerta_id: int,
     db: Session = Depends(get_db)

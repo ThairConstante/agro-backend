@@ -26,8 +26,7 @@ def list_muestras(db: Session = Depends(get_db)):
 # GET /api/muestras/{muestra_id}
 # ============================================================
 
-@app.get(
-    "/{muestra_id}", response_model=schemas.MuestraSueloResponse)
+@app.get("/{muestra_id}", response_model=schemas.MuestraSueloResponse)
 def get_muestra(
     muestra_id: int,
     db: Session = Depends(get_db)

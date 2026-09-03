@@ -11,16 +11,12 @@ import app.schemas.lote_tierra_schema as schemas
 app = APIRouter()
 
 
-@app.get("/list", dependencies=[Depends(decode_token)])
+@app.get("/list")
 def list_lotes(db: Session = Depends(get_db)):
     return crud.get_lotes(db=db)
 
 
-@app.get(
-    "/{lote_id}",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.LoteTierraResponse
-)
+@app.get("/{lote_id}", response_model=schemas.LoteTierraResponse)
 def get_lote(
     lote_id: int,
     db: Session = Depends(get_db)

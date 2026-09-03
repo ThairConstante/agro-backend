@@ -11,10 +11,7 @@ import app.schemas.historial_consulta_llm_schema as schemas
 app = APIRouter()
 
 
-@app.get(
-    "/list",
-    dependencies=[Depends(decode_token)]
-)
+@app.get("/list",dependencies=[Depends(decode_token)])
 def list_consultas_llm(
     db: Session = Depends(get_db)
 ):
@@ -22,11 +19,7 @@ def list_consultas_llm(
     return crud.get_historial_consultas(db=db)
 
 
-@app.get(
-    "/{historial_id}",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.HistorialConsultaLLMResponse
-)
+@app.get("/{historial_id}", response_model=schemas.HistorialConsultaLLMResponse)
 def get_consulta_llm(
     historial_id: int,
     db: Session = Depends(get_db)

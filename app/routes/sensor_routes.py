@@ -11,16 +11,12 @@ import app.schemas.sensor_schema as schemas
 app = APIRouter()
 
 
-@app.get("/list", dependencies=[Depends(decode_token)])
+@app.get("/list")
 def list_sensores(db: Session = Depends(get_db)):
     return crud.get_sensores(db=db)
 
 
-@app.get(
-    "/{sensor_id}",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.SensorResponse
-)
+@app.get("/{sensor_id}", response_model=schemas.SensorResponse)
 def get_sensor(
     sensor_id: int,
     db: Session = Depends(get_db)
