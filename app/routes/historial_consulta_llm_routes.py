@@ -11,7 +11,7 @@ import app.schemas.historial_consulta_llm_schema as schemas
 app = APIRouter()
 
 
-@app.get("/list",dependencies=[Depends(decode_token)])
+@app.get("/list")
 def list_consultas_llm(
     db: Session = Depends(get_db)
 ):
@@ -39,11 +39,7 @@ def get_consulta_llm(
     return consulta
 
 
-@app.post(
-    "/create",
-    dependencies=[Depends(decode_token)],
-    response_model=schemas.HistorialConsultaLLMResponse
-)
+@app.post("/create", response_model=schemas.HistorialConsultaLLMResponse)
 def create_consulta_llm(
     consulta: schemas.HistorialConsultaLLMCreate,
     db: Session = Depends(get_db)

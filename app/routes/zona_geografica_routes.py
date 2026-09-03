@@ -16,9 +16,7 @@ def list_zonas(db: Session = Depends(get_db)):
     return crud.get_zonas(db=db)
 
 
-@app.get("/{zona_id}",dependencies=[Depends(decode_token)],
-    response_model=schemas.ZonaGeograficaResponse
-)
+@app.get("/{zona_id}", response_model=schemas.ZonaGeograficaResponse)
 def get_zona(zona_id: int, db: Session = Depends(get_db)):
 
     zona = crud.get_zona(db=db, zona_id=zona_id)
